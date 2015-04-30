@@ -1,0 +1,21 @@
+name "deployer"
+version "1.0"
+
+
+import_types_from "deployerTypes.hpp"
+
+using_library "class_loader"
+
+task_context "Task" do
+    needs_configuration
+
+    property("libdir","/std/string",File.join(ENV['AUTOPROJ_CURRENT_ROOT'],"install","lib","orocos"))
+
+
+    operation("deploy").
+    argument("task_name","/std/string").
+    argument("deployed_name","/std/string").
+    returns("/bool")
+    
+end
+
